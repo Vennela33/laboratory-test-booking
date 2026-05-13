@@ -50,11 +50,17 @@ function PatientForm({
             <input
               type="number"
               value={patientAge}
-              onChange={(e) =>
-                setPatientAge(e.target.value)
+              onChange={(e) =>{
+                const value = e.target.value;
+
+
+      if (value >= 0 || value === "") {
+        setPatientAge(value);
               }
+            }}
               className="form-input"
               placeholder="Enter age"
+              min="0"
               required
             />
 
@@ -69,13 +75,24 @@ function PatientForm({
             <input
               type="number"
               value={patientNumber}
-              onChange={(e) =>
-                setPatientNumber(e.target.value)
-              }
-              className="form-input"
-              placeholder="Enter phone number"
-              required
-            />
+              onChange={(e) => {
+
+      // Allow Only Numbers
+
+      const value =
+        e.target.value.replace(/\D/g, "");
+
+      // Limit to 10 Digits
+
+      if (value.length <= 10) {
+        setPatientNumber(value);
+      }
+
+    }}
+    className="form-input"
+    placeholder="Enter 10-digit phone number"
+    maxLength={10}
+    required/>
 
           </div>
 

@@ -31,19 +31,71 @@ function LaboratoryBooking() {
 
   const handleSaveDetails = () => {
 
-    if (
-      !patientName ||
-      !bookingDate ||
-      !selectedSlot
-    ) {
-      alert("Please fill all details");
-      return;
-    }
+
+  if (!patientName.trim()) {
+
+    alert("Please enter patient name");
+
+    return;
+  }
 
 
-    setShowSummary(true);
-  };
+  if (
+    patientAge === "" ||
+    patientAge < 1 ||
+    patientAge > 120
+  ) {
 
+    alert("Please enter valid age");
+
+    return;
+  }
+
+
+  if (patientNumber.length !== 10) {
+
+    alert(
+      "Phone number must contain 10 digits"
+    );
+
+    return;
+  }
+
+if (!patientEmail.trim()) {
+
+  alert("Please enter email address");
+
+  return;
+}
+  const emailPattern =
+  /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  if (!emailPattern.test(patientEmail)) {
+
+    alert("Please enter valid email");
+
+    return;
+  }
+
+
+  if (!bookingDate) {
+
+    alert("Please select booking date");
+
+    return;
+  }
+
+
+  if (!selectedSlot) {
+
+    alert("Please select time slot");
+
+    return;
+  }
+
+
+  setShowSummary(true);
+};
 
   const handleConfirmBooking = () => {
 
