@@ -182,3 +182,13 @@
     border-right-color: var(--border);
   }
 }
+
+.layout{
+ display:flex;
+}
+
+.content{
+ flex:1;
+ margin-left:240px;
+ padding:20px;
+}

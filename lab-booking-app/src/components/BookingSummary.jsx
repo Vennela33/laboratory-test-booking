@@ -1,86 +1,98 @@
+import {Card,Typography,Box,Divider} from "@mui/material";
+
 function BookingSummary({
-  patientName,
-  patientAge,
-  patientEmail,
-  patientNumber,
-  selectedTest,
-  bookingDate,
-  selectedSlot,
-  handleConfirmBooking
+
+patientName,
+patientAge,
+patientEmail,
+patientNumber,
+selectedTest,
+bookingDate,
+selectedSlot
+
 }) {
-  return (
-    <div className="summary-card">
 
-      <h2 className="summary-title">
-        Booking Summary
-      </h2>
+const details=[
 
-      <div className="space-y-3">
+{
+label:"Patient Name",
+value:patientName || "-"
+},
 
-        <p>
-          <span className="font-semibold">
-            Patient Name:
-          </span>{" "}
-          {patientName || "-"}
-        </p>
+{
+label:"Patient Age",
+value:patientAge || "-"
+},
 
-        <p>
-          <span className="font-semibold">
-            Patient Age:
-          </span>{" "}
-          {patientAge || "-"}
-        </p>
+{
+label:"Phone Number",
+value:patientNumber || "-"
+},
 
-        <p>
-          <span className="font-semibold">
-            Patient Phone Number:
-          </span>{" "}
-          {patientNumber || "-"}
-        </p>
+{
+label:"Patient Email",
+value:patientEmail || "-"
+},
 
-        <p>
-          <span className="font-semibold">
-            Patient Email:
-          </span>{" "}
-          {patientEmail || "-"}
-        </p>
+{
+label:"Test",
+value:selectedTest?.name || "-"
+},
 
-        <p>
-          <span className="font-semibold">
-            Test:
-          </span>{" "}
-          {selectedTest?.name || "-"}
-        </p>
+{
+label:"Booking Date",
+value:bookingDate
+? bookingDate.toLocaleDateString("en-IN")
+: "-"
+},
 
-        <p>
-          <span className="font-semibold">
-            Booking Date:
-          </span>{" "}
-          {
-            bookingDate
-              ? bookingDate.toLocaleDateString()
-              : "-"
-          }
-        </p>
+{
+label:"Time Slot",
+value:selectedSlot || "-"
+},
 
-        <p>
-          <span className="font-semibold">
-            Time Slot:
-          </span>{" "}
-          {selectedSlot || "-"}
-        </p>
+{
+label:"Total Price",
+value:`₹${selectedTest?.price || 0}`
+}
 
-        <p>
-          <span className="font-semibold">
-            Total Price:
-          </span>{" "}
-          ₹{selectedTest?.price || 0}
-        </p>
+];
 
-      </div>
+return(
 
-    </div>
-  );
+<Card sx={{p:3,borderRadius:3,boxShadow:3}}>
+
+<Typography variant="h6"fontWeight="bold"mb={2}>
+
+Booking Summary
+
+</Typography>
+
+<Divider sx={{mb:2}}/>
+
+{details.map((item,index)=>(
+
+<Box sx={{display:"flex",justifyContent:"space-between", alignItems:"center",mb:2}}>
+
+<Typography fontWeight={600}>
+
+{item.label}:
+
+</Typography>
+
+<Typography>
+
+{item.value}
+
+</Typography>
+
+</Box>
+
+))}
+
+</Card>
+
+);
 }
 
 export default BookingSummary;

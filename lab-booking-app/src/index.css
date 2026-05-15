@@ -21,7 +21,8 @@ body {
 
 .navbar {
   background-color: white;
-  padding: 16px 24px;
+  padding: 10px 20px;
+  margin-left:-14px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -212,25 +213,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .back-btn {
   width: 100%;
-
   padding: 14px;
   margin-top: 10px;
   border: 1px solid #d1d5db;
-
   background: rgb(239, 87, 87);
-
   border-radius: 14px;
-
   font-size: 16px;
   font-weight: 600;
-
   cursor: pointer;
-
   transition: 0.3s ease;
 }
 
 .main-container {
   min-height: 100vh;
+  margin-left: 250px;
   background-color: #f3f4f6;
 }
 
@@ -448,4 +444,41 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .disabled-slot:hover {
   background-color: #e5e7eb;
+}
+
+.sidebar{
+  width:240px;
+  min-height:100vh;
+  background:white;
+  border-right:1px solid #e5e7eb;
+  padding:20px;
+  position:fixed;
+  left:0;
+  top:0;
+}
+
+.sidebar-title{
+  font-size:24px;
+  font-weight:bold;
+  margin-bottom:30px;
+  color:#2563eb;
+}
+
+.sidebar-link{
+  display:block;
+  padding:14px;
+  margin-bottom:10px;
+  text-decoration:none;
+  color:#374151;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.sidebar-link:hover{
+  background:#eff6ff;
+}
+
+.active-link{
+  background:#2563eb;
+  color:white;
 }

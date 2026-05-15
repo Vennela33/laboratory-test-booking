@@ -1,160 +1,138 @@
+import {Card,Typography,TextField,Button,Grid} from "@mui/material";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import TimeSlots from "./TimeSlots";
 
 function PatientForm({
-  patientName,
-  setPatientName,
-  patientAge,
-  setPatientAge,
-  patientNumber,
-  setPatientNumber,
-  patientEmail,
-  setPatientEmail,
-  bookingDate,
-  setBookingDate,
-  selectedSlot,
-  setSelectedSlot,
-  handleSaveDetails
+patientName,
+setPatientName,
+patientAge,
+setPatientAge,
+patientNumber,
+setPatientNumber,
+patientEmail,
+setPatientEmail,
+bookingDate,
+setBookingDate,
+selectedSlot,
+setSelectedSlot,
+handleSaveDetails
 }) {
 
-  return (
-    <div className="card-style">
+return(
 
-      <h2 className="text-2xl font-bold mb-6">
-        Enter Patient Details
-      </h2>
+<Card sx={{p:4,borderRadius:3}}>
 
+<Typography
+variant="h6"
+fontWeight="bold"
+mb={3}
+>
+Enter Patient Details
+</Typography>
 
-      <div className="mb-5">
-        <div>
-        <label className="form-label">
-          Patient Name
-        </label>
+<Grid container spacing={3}>
 
-        <input
-          type="text"
-          placeholder="Enter Patient Name"
-          value={patientName}
-          onChange={(e) => setPatientName(e.target.value)}
-          className="form-input"
-        />
-</div>
-<div>
+<Grid item xs={6}>
 
-            <label className="form-label">
-              Patient Age
-            </label>
-
-            <input
-              type="number"
-              value={patientAge}
-              onChange={(e) =>{
-                const value = e.target.value;
-
-
-      if (value >= 0 || value === "") {
-        setPatientAge(value);
-              }
-            }}
-              className="form-input"
-              placeholder="Enter age"
-              min="0"
-              required
-            />
-
-          </div>
-
-          <div>
-
-            <label className="form-label">
-              Patient Phone Number
-            </label>
-
-            <input
-              type="number"
-              value={patientNumber}
-              onChange={(e) => {
-
-      // Allow Only Numbers
-
-      const value =
-        e.target.value.replace(/\D/g, "");
-
-      // Limit to 10 Digits
-
-      if (value.length <= 10) {
-        setPatientNumber(value);
-      }
-
-    }}
-    className="form-input"
-    placeholder="Enter 10-digit phone number"
-    maxLength={10}
-    required/>
-
-          </div>
-
-<div>
-
-            <label className="form-label">
-              Patient Email
-            </label>
-
-            <input
-              type="email"
-              value={patientEmail}
-              onChange={(e) =>
-                setPatientEmail(e.target.value)
-              }
-              className="form-input"
-              placeholder="Enter email"
-              required
-            />
-
-          </div>
-
-      </div>
-
-
-      <div className="mb-5">
-
-        <label className="form-label">
-          Booking Date
-        </label>
-
-        <DatePicker
-          selected={bookingDate}
-          onChange={(date) => setBookingDate(date)}
-          minDate={new Date()}
-          placeholderText="Select Booking Date"
-          className="form-input"
-        />
-
-      </div>
-
-
-      <TimeSlots
-  selectedSlot={selectedSlot}
-  setSelectedSlot={setSelectedSlot}
-  bookingDate={bookingDate}
+<TextField
+sx={{width:"700px"}}
+label="Patient Name"
+value={patientName}
+onChange={(e)=>
+setPatientName(
+e.target.value
+)
+}
 />
 
+</Grid>
 
-      <button
-        onClick={handleSaveDetails}
-        className="confirm-btn"
-      >
-        Save
-      </button>
+<Grid item xs={6}>
 
-    </div>
-  );
+<TextField
+sx={{width:"700px"}}
+type="number"
+label="Patient Age"
+value={patientAge}
+inputProps={{min:0}}
+
+onChange={(e)=>{
+
+const value=e.target.value;
+
+if(value==="" ||value>=0){
+  setPatientAge(value)
 }
+}}
+/>
+
+</Grid>
+
+<Grid item xs={6}>
+
+<TextField
+ sx={{width:"700px"}}
+  label="Phone Number"
+  value={patientNumber}
+  onChange={(e)=>{
+  const value=
+  e.target.value
+  .replace(/\D/g,"");
+  if(value.length<=10){
+  setPatientNumber(value)
+  }
+  }}
+/>
+
+</Grid>
+
+<Grid item xs={12}>
+
+<TextField
+  sx={{width:"700px"}}
+  type="email"
+  label="Email"
+  value={patientEmail}
+  onChange={(e)=>
+  setPatientEmail(e.target.value)
+  }
+/>
+
+</Grid>
+
+<Grid item xs={12}>
+
+<Typography mb={1}>Booking Date</Typography>
+
+<DatePicker
+  selected={bookingDate}
+  onChange={setBookingDate}
+  minDate={new Date()}
+  placeholderText="Select Date"
+  className="form-input"
+/>
+
+</Grid>
+
+<Grid item xs={12}>
+
+<TimeSlots
+selectedSlot={selectedSlot}
+setSelectedSlot={setSelectedSlot}
+bookingDate={bookingDate}
+/>
+
+</Grid>
+
+<Grid item xs={12}>
+
+<Button fullWidthvariant="contained" size="large" sx={{width:"700px",backgroundColor:"#1bbae6",color:"#fff"}} onClick={handleSaveDetails}>Save
+
+</Button>
+</Grid>
+</Grid>
+</Card>
+)}
 
 export default PatientForm;
-
-
-
-  
