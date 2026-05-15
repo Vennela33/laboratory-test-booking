@@ -1,6 +1,7 @@
 import { useState } from "react";
-import {Box,Typography,Grid} from "@mui/material";
+import {Box,Typography,Grid,Paper} from "@mui/material";
 import Navbar from "../components/Navbar";
+import HeroSection from "../components/HeroSection";
 import LabTestCard from "../components/LabTestCard";
 import PatientForm from "../components/TestBookingForm";
 import BookingSummary from "../components/BookingSummary";
@@ -67,11 +68,7 @@ return (
 
 <Box sx={{maxWidth:"1300px",mx:"auto",p:4}}>
 
-<Typography variant="h4" fontWeight="bold" mb={4}>
-
-Laboratory Test Booking
-
-</Typography>
+<HeroSection/>
 
 <Typography variant="h6" fontWeight={600}mb={3}>
 
